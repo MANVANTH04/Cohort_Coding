@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <input type="text" placeholder="new"/>
+    <button onclick="addtodo()">click me</button> 
+
+
+
+</body>
+<script>
+    const addtodo = ()=>{
+        const inputel = document.querySelector("input")
+        const value = inputel.value
+
+
+
+        const newdevel = document.createElement("div");
+        newdevel.innerHTML= "<div><div>"+ value +"</div> <button onclick= 'deltodo()'> delete </button></div>"
+       
+
+        document.querySelector("body").appendChild(newdevel);
+    }
+
+    const deltodo = ()=>{
+        console.log("deleted")
+        document.querySelector()
+    }
+
+
+</script>
+</html>
