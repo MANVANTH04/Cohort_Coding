@@ -15,6 +15,7 @@
 
 </body>
 <script>
+    let ctr = 1
     const addtodo = ()=>{
         const inputel = document.querySelector("input")
         const value = inputel.value
@@ -22,15 +23,19 @@
 
 
         const newdevel = document.createElement("div");
-        newdevel.innerHTML= "<div><div>"+ value +"</div> <button onclick= 'deltodo()'> delete </button></div>"
+        newdevel.setAttribute("id", ctr)
+        ctr +=1
+        newdevel.innerHTML= "<div><div>"+ value +"</div> <button onclick= 'deltodo("+ ctr +"')'> delete </button></div>"
        
 
         document.querySelector("body").appendChild(newdevel);
     }
 
-    const deltodo = ()=>{
+    const deltodo = (index)=>{
+
         console.log("deleted")
-        document.querySelector()
+        const element = document.getElementById(index);
+        element.parentNode.removeChild(element);
     }
 
 
