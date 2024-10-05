@@ -8,35 +8,75 @@
 </head>
 <body>
     
-    <input type="text" placeholder="new"/>
-    <button onclick="addtodo()">click me</button> 
+    <input class = "style3" type="text" placeholder="new"/>
+    <button class = 'style1' onclick="addtodo()">click me</button> 
 
 
 
 </body>
-<script>
-    let ctr = 1
-    const addtodo = ()=>{
-        const inputel = document.querySelector("input")
-        const value = inputel.value
-
-
-
-        const newdevel = document.createElement("div");
-        newdevel.setAttribute("id", ctr)
-        ctr +=1
-        newdevel.innerHTML= "<div><div>"+ value +"</div> <button onclick= 'deltodo("+ ctr +"')'> delete </button></div>"
-       
-
-        document.querySelector("body").appendChild(newdevel);
+<style>
+    .style3{
+        padding: 10px 15px;
+        border-radius: 15px;
+    }
+    .style1{
+        color : black;
+        padding: 10px 15px;
+        background-color: white;
+        border-radius: 15px;
+        border-color: black;
+        margin-top: 5px;
     }
 
+    .style2{
+        color: white;
+        background-color: black;
+        padding: 10px 15px;
+    }
+    body{
+        background-color: grey;
+
+    }
+    span{
+        margin-right: 50%;
+    }
+</style>
+<script>
     const deltodo = (index)=>{
 
         console.log("deleted")
         const element = document.getElementById(index);
         element.parentNode.removeChild(element);
     }
+
+    let ctr = 1
+    const addtodo = ()=>{
+        const inputel = document.querySelector("input")
+        const valuee = inputel.value
+
+
+
+        const newdevel = document.createElement("div");
+        const newspan = document.createElement("span");
+        const newbutton = document.createElement("button");
+        newspan.innerHTML=valuee;
+        newbutton.innerHTML= "delete";
+        newdevel.id=ctr
+        const currentId = ctr;
+        newbutton.onclick=()=>deltodo(currentId);
+
+        newdevel.appendChild(newspan);
+        newdevel.appendChild(newbutton);
+        newdevel.className="style1";
+        newbutton.className="style2";
+
+
+    
+
+        document.querySelector("body").appendChild(newdevel);
+        ctr+=1
+    }
+
 
 
 </script>
