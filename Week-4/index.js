@@ -5,7 +5,7 @@ import { dirname } from "path"
 
 
 console.log(chalk.blue("hello world"))
-
+console.log(chalk.black("hello"))
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname  =dirname(__filename)
