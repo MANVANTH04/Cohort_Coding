@@ -56,15 +56,7 @@ app.get('/about', (req,res)=>{
 
 })
 
-app.put('/todo/:id', (req, res)=>{
-    const id = req.params.id;
-    const title = req.body.inputtitle;
-    const description = req.body.inputdesc;
-    const index = todos.finalIndex(todo=>todo.id === Number(id));
-    todos[index].title = title;
-    todos[index].description = description;
-    res.redirect('/')
-})
+
 
 
 app.listen(3000)
