@@ -4,6 +4,8 @@ const app = express();
 
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended:true}));
 
 
 
@@ -71,8 +73,13 @@ app.put('/todo/:id', (req, res)=>{
 })
 
 app.delete('/todo/:id', (req,res)=>{
-    
+
 })
+
+
+
+
+
 
 
 app.listen(3000)
