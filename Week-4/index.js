@@ -38,7 +38,15 @@ res.end();
     res.send();
 
 
+
+
 })
+
+app.post("/todo/list", (req,res)=>{
+    
+})
+
+
 
 app.post('/todo', (req,res)=>{
     const title = req.body.inputtitle;
