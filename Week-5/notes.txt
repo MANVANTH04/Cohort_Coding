@@ -1,0 +1,8 @@
+Cors:- 
+
+--> cors should be not allowed by default 
+you have to code like only your frontend should get the details from the backend. 
+
+assignment. 
+
+1) write a 
