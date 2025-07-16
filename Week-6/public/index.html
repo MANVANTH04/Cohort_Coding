@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jwt Auth</title>
+     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+
+<body>
+    <div>
+        <input id = "signup-username" type="text" name="username" placeholder= "enter username"  />
+        <input id ="signup-password" type="password" name = "password" placeholder = " enter password"/>
+        <button type="submit" onclick= "signup()" >signup</button>
+    </div>
+
+
+        <input id = "signin-username"  type="text" name="username" placeholder= "enter username"  />
+        <input id = "signin-password" type="password" name = "password" placeholder = " enter password"/>
+        <button type="submit" onclick="signin()">signin</button>
+
+    <div class="userinfo">User Information:- </div>
+    <button type="submit" onclick = "logout()">logout</button>
+
+
+    <script>
+ 
+    const signup = async()=>{
+        const username = document.getElementById("signup-username").value;
+        const password = document.getElementById("signup-password").value;
+        console.log("working")
+        
+    await axios.post("http://localhost:3000/signup", {
+            username: username,
+            password: password
+        })
+        .then(res => console.log(res)) 
+        .catch(err => console.error(err));
+
+ 
+        console.log("User signed up successfully");
+
+    }
+
+    const signin = async()=>{
+        const username = document.getElementById("signin-username").value;
+        const password = document.getElementById("signin-password").value;
+            fetch("/signin",{
+            method:"POST",
+            headers:{
+                "content-type":"application/json"
+            },
+            body: JSON.stringify({
+                username: username,
+                password: password})
+            })
+            .then(res => res.json())
+            .then(res => console.log(res))
+            .catch(err => console.error(err));
+    }
+
+    
+    </script>
+
+</body>
+</html>

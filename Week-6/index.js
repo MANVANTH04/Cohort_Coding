@@ -18,25 +18,8 @@ let users = [{username: "manu", password : "1234", token:"1"},
 
 
 
-
-app.get("/me", (req,res)=>{
-    const auth = req.headers.token;
-    const decodedinfo = jwt.verify(auth, jwtsecret)
-    const username = decodedinfo.username;
-    // const isauth = users.find(user => user.token === auth);
-    console.log(username);
-
-
-    if (user) {
-        // password = user.passwordl;
-        res.send({
-         message: "welcome " + username, 
-         password: user.password,  
-         
-        })
-    }else{
-        res.status(401).send("unauthorized user, please login first");
-    }
+app.get("/", (req,res)=>{
+    res.sendFile(__dirname+"/public/index.html")
 })
 
 app.post("/signup", (req,res)=>{
@@ -82,6 +65,37 @@ app.post("/signin", (req,res)=>{
 }
 
 )
+
+const auth = (req, res, next)=>{
+
+    const auth = req.headers.token;
+    const decodedinfo = jwt.verify(auth, jwtsecret);
+    const verifyUser1 = users.find(user => user.username === decodedinfo.username);
+
+    if (!verifyUser1){
+        res.status(401).send("you are not an authorized user, please login first");
+    }else{
+
+            req.username = decodedinfo.username;
+
+            next();
+    }
+}
+
+// app.use(auth);
+
+app.get("/me", auth, (req,res)=>{
+
+
+
+    
+        res.json({
+         message: "welcome " + req.username, 
+     
+         
+        })
+ 
+})
 
 app.listen(3000, ()=>{
     console.log("server is running at port 3000");
